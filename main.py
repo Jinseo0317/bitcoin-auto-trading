@@ -1,6 +1,6 @@
 import pyupbit
 
-f = open("upbit_api.txt")
+f = open("upbit_key.txt")
 lines = f.readlines()
 access = lines[0].strip()
 secret = lines[1].strip()
