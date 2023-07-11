@@ -1,17 +1,11 @@
-import requests
+import pyupbit
 
-money = "KRW-BTC"
-url = "https://api.upbit.com/v1/market/all"
-params = {
-    "isDetail" : False
-    }
+f = open("upbit_api.txt")
+lines = f.readlines()
+access = lines[0].strip()
+secret = lines[1].strip()
+f.close()
 
-repo = requests.get(url)
-data = repo.json()
-
-krw_coin = []
-for coin in data:
-    ticker = coin["market"]
-    if ticker.startswith("KRW"):
-        krw_coin.append(coin)
-print(krw_coin)
+upbit = pyupbit.Upbit(access,secret)
+balance = upbit.get_balance("KRW")
+print(balance)
